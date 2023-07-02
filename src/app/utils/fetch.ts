@@ -1,8 +1,8 @@
 export const getData = async (url: string) => {
   try {
     const res = await fetch(url, {
-      // cache: 'no-store',
-      next: { revalidate: 0 },
+      cache: 'no-store',
+      // next: { revalidate: 0 },
     });
     return res.ok ? await res.json() : { error: 'error' };
   } catch (error) {
