@@ -35,7 +35,7 @@ const Home = async (props: Props) => {
         sort="occasion"
         // category="bloom"
         filter="birthday"
-        limit={4}
+        limit={3}
       />
       <PromoContainer
         image="/promo-2.png"
@@ -49,7 +49,7 @@ const Home = async (props: Props) => {
         sort="bouquetDetails"
         category="bloom"
         filter="rose"
-        limit={4}
+        limit={3}
       />
     </main>
   );
