@@ -113,7 +113,8 @@ const FlowerItemPage = ({ item }: Props) => {
         <div className={styles.detailsContainer}>
           <p>{delivery.method}</p>
           <h1>
-            {bouquetDetails.name} {bouquetDetails.isBouquet && 'bouquet'}
+            {bouquetDetails.name}{' '}
+            {bouquetDetails.isBouquet ? 'bouquet' : 'plant'}
           </h1>
           <h2>Price: ${sizes[size].price}</h2>
           <h2>Size: {sizes[size].name}</h2>
@@ -133,7 +134,8 @@ const FlowerItemPage = ({ item }: Props) => {
         <div className={styles.flowerDetailsContainer}>
           <div className={styles.descriptionContainer}>
             <h1>
-              {bouquetDetails.name} {bouquetDetails.isBouquet && 'bouquet'}
+              {bouquetDetails.name}{' '}
+              {bouquetDetails.isBouquet ? 'bouquet' : 'plant'}
             </h1>
             <p>{description}</p>
             <p>

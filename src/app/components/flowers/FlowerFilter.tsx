@@ -1,7 +1,7 @@
 'use client';
-import React, { SyntheticEvent, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Flower } from '../../types/flowers';
-import styles from '@/app/styles/FlowerFilter.module.sass';
+import styles from '../../styles/FlowerFilter.module.sass';
 import { AiOutlineClose } from 'react-icons/ai';
 
 type Props = {

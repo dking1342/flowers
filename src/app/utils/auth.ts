@@ -2,8 +2,11 @@ import jwt from 'jsonwebtoken';
 import { NextRequest, NextResponse } from 'next/server';
 import { ACCESS_TOKEN_EXPIRES, REFRESH_TOKEN_EXPIRES } from '../constants';
 
-const ACCESS_TOKEN = process.env.ACCESS_TOKEN_SECRET;
-const REFRESH_TOKEN = process.env.REFRESH_TOKEN_SECRET;
+// const ACCESS_TOKEN = process.env.ACCESS_TOKEN_SECRET;
+// const REFRESH_TOKEN = process.env.REFRESH_TOKEN_SECRET;
+
+const ACCESS_TOKEN = process.env.ACCESS_TOKEN_SECRET_LOCAL;
+const REFRESH_TOKEN = process.env.REFRESH_TOKEN_SECRET_LOCAL;
 
 export const createAccessToken = (user: any) => {
   return jwt.sign(

@@ -16,7 +16,8 @@ export const GET = async () => {
   const { value } = token;
 
   try {
-    const ACCESS_TOKEN = process.env.ACCESS_TOKEN_SECRET;
+    // const ACCESS_TOKEN = process.env.ACCESS_TOKEN_SECRET;
+    const ACCESS_TOKEN = process.env.ACCESS_TOKEN_SECRET_LOCAL;
     verify(value, ACCESS_TOKEN!);
     return NextResponse.json(
       { success: true, payload: 'cookie' },
