@@ -22,47 +22,53 @@ const FlowerCards = ({ data }: Props) => {
   const [displayList, setDisplayList] = useState<Flower[]>([]);
 
   const filterFlower = useCallback(() => {
-    const filter = data.filter((item) => {
-      let checker = false;
-      userSort.forEach((f) => {
-        if (f.type === 'color') {
-          return item.bouquetDetails.color.includes(f.val) && (checker = true);
-        }
-        if (f.type === 'flower') {
-          return item.bouquetDetails.bloom.includes(f.val) && (checker = true);
-        }
-        if (f.type === 'delivery') {
-          return item.delivery.method === f.val && (checker = true);
-        }
-        if (f.type === 'occasions') {
-          return item.occasion.includes(f.val) && (checker = true);
-        }
-        if (f.type === 'price') {
-          let min = 0;
-          let max = 0;
-          let range = f.val.split(' ');
-
-          if (range.includes('under')) {
-            min = 0;
-            max = Number(range[0].slice(1));
-          } else if (range.includes('Above')) {
-            min = Number(range[1].slice(1));
-            max = 9999;
-          } else {
-            min = Number(range[0].slice(1));
-            max = Number(range[2].slice(1));
+    if (data) {
+      const filter = data.filter((item) => {
+        let checker = false;
+        userSort.forEach((f) => {
+          if (f.type === 'color') {
+            return (
+              item.bouquetDetails.color.includes(f.val) && (checker = true)
+            );
           }
+          if (f.type === 'flower') {
+            return (
+              item.bouquetDetails.bloom.includes(f.val) && (checker = true)
+            );
+          }
+          if (f.type === 'delivery') {
+            return item.delivery.method === f.val && (checker = true);
+          }
+          if (f.type === 'occasions') {
+            return item.occasion.includes(f.val) && (checker = true);
+          }
+          if (f.type === 'price') {
+            let min = 0;
+            let max = 0;
+            let range = f.val.split(' ');
 
-          item.sizes.find((x) => {
-            if (x.price >= min && x.price <= max) {
-              return (checker = true);
+            if (range.includes('under')) {
+              min = 0;
+              max = Number(range[0].slice(1));
+            } else if (range.includes('Above')) {
+              min = Number(range[1].slice(1));
+              max = 9999;
+            } else {
+              min = Number(range[0].slice(1));
+              max = Number(range[2].slice(1));
             }
-          });
-        }
+
+            item.sizes.find((x) => {
+              if (x.price >= min && x.price <= max) {
+                return (checker = true);
+              }
+            });
+          }
+        });
+        return checker && item;
       });
-      return checker && item;
-    });
-    return filter;
+      return filter;
+    }
   }, [data, userSort]);
 
   const paginate = (items: Flower[], page = 1, perPage = 2) => {
@@ -82,11 +88,13 @@ const FlowerCards = ({ data }: Props) => {
       setPage(1);
     }
 
-    if (filterFlower().length < 1 && userSort.length < 1) {
-      // setPage(1);
-      paginate(data, page, perPage);
-    } else {
-      paginate(filterFlower(), page, perPage);
+    if (filterFlower()) {
+      if (filterFlower()!.length < 1 && userSort.length < 1) {
+        // setPage(1);
+        paginate(data, page, perPage);
+      } else {
+        paginate(filterFlower()!, page, perPage);
+      }
     }
   }, [filterFlower, data, userSort, page, perPage, totalPages]);
 
