@@ -1,5 +1,5 @@
 type Url = {
-  API_URL: 'http://localhost:3000' | 'https://dking1342-github-io.vercel.app';
+  API_URL: 'http://localhost:3000' | 'https://flowers-dun.vercel.app/';
 };
 
 export type UrlObject = {
@@ -9,7 +9,7 @@ export type UrlObject = {
 export const prefix = () => {
   const prod: UrlObject = {
     url: {
-      API_URL: 'https://dking1342-github-io.vercel.app',
+      API_URL: 'https://flowers-dun.vercel.app/',
     },
   };
 
