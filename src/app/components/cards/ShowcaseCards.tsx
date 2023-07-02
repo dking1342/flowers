@@ -18,46 +18,47 @@ const ShowcaseCards = ({ data, sort, category, filter, limit }: Props) => {
   const [flowers, setFlowers] = useState<Flower[]>([]);
 
   useEffect(() => {
-    let arr = data
-      .filter((flo) => {
-        let isFilter = false;
-        let obj: any = flo;
-        for (const key in obj) {
-          if (key === sort) {
-            let sortObj = obj[key];
-            for (const key in obj) {
-              if (Array.isArray(sortObj)) {
-                if (sortObj.includes(filter)) {
-                  isFilter = true;
-                }
-              } else {
-                if (category === 'bloom') {
-                  if (sortObj.bloom.includes(filter)) {
+    if (data) {
+      let arr = data
+        .filter((flo) => {
+          let isFilter = false;
+          let obj: any = flo;
+          for (const key in obj) {
+            if (key === sort) {
+              let sortObj = obj[key];
+              for (const key in obj) {
+                if (Array.isArray(sortObj)) {
+                  if (sortObj.includes(filter)) {
                     isFilter = true;
                   }
-                }
-                if (category === 'color') {
-                  if (sortObj.color.includes(filter)) {
-                    console.log('color');
-                    isFilter = true;
+                } else {
+                  if (category === 'bloom') {
+                    if (sortObj.bloom.includes(filter)) {
+                      isFilter = true;
+                    }
                   }
+                  if (category === 'color') {
+                    if (sortObj.color.includes(filter)) {
+                      isFilter = true;
+                    }
+                  }
+                  // if (key === category!) {
+                  //   if (sortObj[key].includes(filter)) {
+                  //     isFilter = true;
+                  //   }
+                  // } else {
+                  //   console.log('error');
+                  // }
                 }
-                // if (key === category!) {
-                //   if (sortObj[key].includes(filter)) {
-                //     isFilter = true;
-                //   }
-                // } else {
-                //   console.log('error');
-                // }
               }
             }
           }
-        }
-        return isFilter && flo;
-      })
-      .slice(0, limit);
-    setFlowers(arr);
-  }, []);
+          return isFilter && flo;
+        })
+        .slice(0, limit);
+      setFlowers(arr);
+    }
+  }, [data]);
 
   return (
     <section className={`${globalStyles.section} ${styles.showcase}`}>
