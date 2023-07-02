@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/app/lib/mongodb';
 import Flower from '@/app/models/Flower';
 
-export const GET = async () => {
+export const GET = async (request: Request) => {
   try {
     await dbConnect();
     const data = await Flower.find({}).populate('bouquetDetails');

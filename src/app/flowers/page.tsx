@@ -1,7 +1,7 @@
 import React from 'react';
 import FlowerCards from '../components/cards/FlowerCards';
 import { Metadata } from 'next';
-import { getData } from '../utils/fetch';
+// import { getData } from '../utils/fetch';
 import styles from '../styles/FlowerPage.module.sass';
 import { prefix } from '../utils/prefix';
 
@@ -12,9 +12,22 @@ export const metadata: Metadata = {
   description: 'List of all the available flowers',
 };
 
+const getFlowers = async (url: string) => {
+  try {
+    const res = await fetch(url, {
+      cache: 'no-store',
+      // next: { revalidate: 1 },
+    });
+    return res.ok ? await res.json() : { success: false, error: 'error' };
+  } catch (error) {
+    const err = error as Error;
+    return { success: false, error: err.message };
+  }
+};
+
+const url = prefix();
 const Flowers = async (props: Props) => {
-  const url = prefix();
-  const flowers = await getData(`${url.url.API_URL}/flowers/api`);
+  const flowers = await getFlowers(`${url.url.API_URL}/flowers/api`);
 
   return (
     <section className={styles.section}>
