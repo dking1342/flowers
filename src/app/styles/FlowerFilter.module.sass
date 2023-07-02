@@ -1,0 +1,84 @@
+.container
+  width: 100%
+
+  .filtersContainer
+    display: flex
+    flex-wrap: wrap
+    height: fit-content
+    align-items: flex-start
+    justify-content: flex-start
+    padding-bottom: 0.5rem
+    column-gap: 0.5rem
+    // min-height: 100px
+    // row-gap: 2rem
+    // padding: 2rem 0
+
+    .filterContainer
+      width: 95%
+      min-width: 100px
+      width: fit-content
+      height: 100%
+
+      button
+        padding: 0.5rem 2rem
+        background: transparent
+        font-size: 0.8rem
+        font-weight: 400
+        text-transform: capitalize
+        border: 1.5px #bbb solid
+        cursor: pointer
+
+      ul
+        max-height: 0
+        height: fit-content
+        color: #000
+        overflow: hidden
+        width: 95%
+        display: flex
+        flex-direction: column
+        gap: 0.5rem
+        margin-top: 0.5rem
+        transition: 1s ease all
+
+        li
+          display: flex
+          gap: 0.5rem
+          align-items: center
+          padding: 0.25rem 0
+          width: 100%
+
+          label
+            color: #000
+            font-size: 0.75rem
+            text-transform: capitalize
+            font-weight: 300
+
+  .userFiltersContainer
+    width: 100%
+    display: flex
+    flex-direction: column
+    gap: 0.5rem
+
+    h1
+      text-transform: capitalize
+      font-size: 1rem
+      font-weight: 300
+
+    .userFilterContainer
+      display: flex
+      gap: 0.5rem
+      flex-wrap: wrap
+
+      button
+        padding: 0.25rem 0.75rem
+        text-align: left
+        font-size: 0.7rem
+        text-transform: capitalize
+        display: flex
+        align-items: center
+        justify-content: space-between
+        gap: 0.5rem
+        border-radius: 25px
+        border: none
+        outline: none
+        cursor: pointer

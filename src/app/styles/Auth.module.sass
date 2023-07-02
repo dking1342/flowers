@@ -1,0 +1,94 @@
+@import './_variables.sass'
+
+.section
+  min-height: 100vh
+  display: flex
+  flex-direction: column
+  gap: 1rem
+  align-items: center
+  justify-content: flex-start
+  padding-top: 3rem
+
+  .h1
+    font-size: 1rem
+    font-weight: 300
+    text-transform: capitalize
+
+  .form
+    max-width: 350px
+    width: 95%
+    margin: 0 auto
+    display: flex
+    flex-direction: column
+    gap: 1rem
+    // border: 1px solid $color-accent
+    background-color: $bg-light
+    border-radius: 15px
+    padding: 2rem 0
+    align-items: center
+    justify-content: flex-start
+
+    .formGroup
+      width: 90%
+      display: flex
+      gap: 0.5rem
+      border: 1px solid $color-accent
+      position: relative
+      padding: 1.75rem 0
+      border-radius: 8px
+
+      .floatLabel
+        position: absolute
+        left: 10px
+        font-size: 1.5rem
+        top: 50%
+        transform: translateY(-50%)
+        z-index: 2
+        pointer-events: none
+        text-transform: capitalize
+        transition: all ease 0.5s
+
+      input
+        position: absolute
+        inset: 0
+        padding: 10px
+        font-size: 1rem
+        outline: none
+        border: none
+        border-radius: 8px
+
+        &:focus + .floatLabel,
+        &:not(:placeholder-shown) + .floatLabel
+          font-size: 12px
+          top: 0px
+          transition: all ease 0.5s
+          background-color: white
+
+        &:focus
+          border: 1px solid #fff
+          transition: all ease 0.5s
+
+    .btn
+      margin-top: 2rem
+      width: 95%
+      padding: 1rem
+      background: $color-accent
+      color: $color-secondary
+      border-radius: 25px
+      border: none
+      outline: none
+      font-size: 0.8rem
+      font-weight: 200
+      text-transform: uppercase
+      letter-spacing: 0.5px
+      cursor: pointer
+
+    p
+      font-size: 12px
+      width: 90%
+      text-align: left
+      margin-top: 1.5rem
+
+      .link
+        cursor: pointer
+        color: $color-accent

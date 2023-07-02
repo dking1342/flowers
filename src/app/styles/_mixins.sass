@@ -1,0 +1,89 @@
+@import './_variables.sass'
+
+@mixin nav-li
+  text-transform: uppercase
+  font-weight: 100
+  text-align: center
+  position: relative
+
+@mixin nav-li-after
+  content: ''
+  display: block
+  margin: auto
+  height: 2px
+  width: 0px
+  background: white
+  transition: width .5s ease, background .5s ease
+
+@mixin nav-li-after-hover
+  width: 100%
+  background: $color-secondary
+
+@mixin section-style
+  position: relative
+  margin-bottom: 2rem
+
+@mixin small-errors
+  color: #ff0000
+  text-transform: capitalize
+  padding: 1rem 0
+
+@mixin form-field-container
+  display: flex
+  flex-direction: column
+  gap: 0.5rem
+  max-width: 500px
+  width: 100%
+
+@mixin form-field-mini-container
+  display: flex
+  flex-direction: column
+  gap: 0.25rem
+
+@mixin form-field-loop-container
+  display: flex
+  gap: 0.25rem
+
+@mixin form-field-label
+  text-transform: capitalize
+  font-size: 1rem
+  font-weight: 200
+
+@mixin form-field-input
+  height: 2.5rem
+  font-size: 1rem
+  font-weight: 200
+
+@mixin form-field-textarea
+  padding: 0.5rem
+  font-size: 1rem
+  font-weight: 200
+
+@mixin form-field-select
+  height: 2.5rem
+  font-size: 1.25rem
+  text-transform: capitalize
+  font-weight: 200
+
+@mixin form-field-option
+  font-weight: 200
+
+@mixin form-field-select-mod
+  height: 2.5rem
+  font-size: 1rem
+  max-width: 200px
+  width: 100%
+  text-transform: capitalize
+  font-weight: 200
+
+@mixin form-field-button-selector
+  background: transparent
+  outline: none
+  border: none
+  height: 2.5rem
+  cursor: pointer
+  display: flex
+  align-items: center
+  gap: 0.5rem
+  min-width: 50px
+  font-size: 12px

@@ -1,0 +1,18 @@
+@import './_mixins.sass'
+
+.selectContainer
+  @include form-field-mini-container
+
+  .selectLoop
+    @include form-field-loop-container
+
+    .select
+      @include form-field-select-mod
+      text-transform: capitalize
+      font-weight: 200
+
+      option
+        font-weight: 200
+
+  .selectBtn
+    @include form-field-button-selector

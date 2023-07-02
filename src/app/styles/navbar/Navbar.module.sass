@@ -1,0 +1,113 @@
+@import '../_variables.sass'
+@import '../_mixins.sass'
+
+.nav
+  position: sticky
+  top: 0px
+  z-index: 10
+  opacity: 0.99
+  width: 100%
+  display: flex
+  background-color: $color-accent
+  color: $color-secondary
+  flex-direction: column
+  overflow-x: hidden
+  overflow-y: scroll
+  padding: 2rem 5rem
+
+  .row
+    position: sticky
+    top: 0
+    width: 100%
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+    .navIcon
+      width: 50px
+      height: 50px
+      position: relative
+      display: flex
+      align-items: center
+      justify-content: center
+
+      svg
+        fill: $color-secondary
+        width: 50%
+        height: 50%
+
+    .navLinks
+      .ul
+        display: flex
+        align-items: center
+        justify-content: flex-end
+        gap: 1.5rem
+
+        .li
+          @include nav-li
+
+          &:after
+            @include nav-li-after
+
+          &:hover:after
+            @include nav-li-after-hover
+
+        .btn
+          background-color: transparent
+          outline: none
+          border: none
+          cursor: pointer
+
+    .mobileToggleBtn
+      display: none
+      width: 50px
+      height: 50px
+      cursor: pointer
+      background-color: transparent
+      border: none
+      outline: none
+
+  .mobileMenu
+    display: flex
+    align-items: flex-start
+    transition: all 1s ease
+
+    .ul
+      display: flex
+      flex-direction: column
+      align-items: flex-start
+      justify-content: flex-start
+      gap: 1.5rem
+
+      .li
+        @include nav-li
+
+        &:after
+          @include nav-li-after
+
+        &:hover:after
+          @include nav-li-after-hover
+      .btn
+        background-color: transparent
+        outline: none
+        border: none
+        cursor: pointer
+
+  .mobileMenuOpen
+    max-height: 200vh
+    height: 100vh
+    padding-top: 2rem
+
+  .mobileMenuClose
+    max-height: 0px
+    height: 0px
+    overflow: hidden
+
+@media (max-width:800px)
+  .nav
+    .row
+      display: flex
+      .navLinks
+        display: none
+      .mobileToggleBtn
+        display: block

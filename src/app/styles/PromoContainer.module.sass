@@ -1,0 +1,103 @@
+@import './_variables.sass'
+@import './_mixins.sass'
+
+.section
+  @include section-style
+
+.promo
+  display: grid
+  grid-template-columns: 50% 50%
+  height: 1000px
+  max-height: 70vh
+  background-color: purple
+
+  .imgContainer
+    height: 100%
+    width: 100%
+    position: relative
+
+    img
+      object-fit: cover
+      object-position: center
+
+  .contentContainer
+    height: 100%
+    width: 100%
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    gap: 1rem
+    margin: 0 auto
+    text-transform: capitalize
+    min-height: 300px
+
+    h1
+      font-size: clamp(2rem,4vw,3rem)
+      text-align: center
+      font-weight: 400
+      width: 95%
+    p
+      font-size: clamp(0.6rem,3vw,1rem)
+      margin-bottom: 2rem
+      text-align: center
+      width: 95%
+      line-height: 1.7
+
+    button
+      text-transform: uppercase
+      padding: 0.75rem 2rem
+      border-radius: 35px
+      outline: none
+      appearance: none
+      border: none
+      font-weight: 500
+      letter-spacing: 1px
+      cursor: pointer
+      transition: background 0.5s ease
+
+  .lightMode
+    background-color: $bg-light
+    color: $color-light
+
+    button
+      background: $color-accent
+      color: $color-secondary
+
+      &:hover
+        background: $hover-accent
+
+  .darkMode
+    background-color: $bg-dark
+    color: $color-dark
+
+    button
+      background: $color-accent
+      color: $color-secondary
+      border: 1px solid $color-secondary
+      &:hover
+        background: $color-secondary
+        color: $color-accent
+
+@media (max-width:1500px)
+  .promo
+    height: 70vh
+
+@media (max-width:1000px)
+  .promo
+    height: 50vh
+
+@media (max-width:767px)
+  .promo
+    grid-template-columns: 1fr
+    // min-height: 1000px
+    height: fit-content
+    max-height: 1000px
+
+    .imgContainer
+      height: 70vw
+      img
+        position: unset
+
+    .contentContainer
+      height: 50vw

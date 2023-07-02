@@ -1,0 +1,96 @@
+@import './_variables.sass'
+@import './_mixins.sass'
+
+.section
+  @include section-style
+  min-height: 100vh
+
+  .container
+    display: flex
+    flex-direction: column
+    max-width: 1400px
+    width: 95%
+    margin: 0 auto
+    align-items: center
+    gap: 1rem
+
+    .header
+      font-size: 2rem
+      font-weight: 200
+      padding-top: 2rem
+      text-transform: capitalize
+      text-align: center
+      width: 100%
+
+    .form
+      width: 100%
+      background: #eee
+      padding: 2rem 1rem
+
+      hr
+        margin: 2rem 0
+        background-color: $color-accent
+        height: 3px
+
+      .groupHeader
+        font-size: 1.25rem
+        font-weight: 400
+        text-transform: capitalize
+        padding-bottom: 1rem
+        display: flex
+        align-items: center
+        gap: 0.5rem
+
+      .sizeBtn
+        outline: none
+        border: none
+        display: flex
+        gap: 0.5rem
+        align-items: center
+        margin: 1rem 0
+        cursor: pointer
+
+      .formGroup
+        display: flex
+        flex-direction: column
+        gap: 0.75rem
+        margin-bottom: 1rem
+
+        h2,
+        h3
+          font-size: 1rem
+          font-weight: 200
+          text-transform: capitalize
+          margin: 0.5rem 0
+
+        h3
+          text-decoration: underline
+
+        small
+          @include small-errors
+
+      .sizes
+        hr
+          margin: 2rem 0
+          background-color: $bg-light
+          height: 3px
+
+      .submitContainer
+        padding: 2rem 0
+
+        input
+          padding: 1rem 4rem
+          background: $color-accent
+          color: $color-secondary
+          outline: none
+          border: none
+          border-radius: 25px
+          font-size: 1.25rem
+          text-transform: uppercase
+          letter-spacing: 1.2px
+          font-weight: 200
+          cursor: pointer
+          transition: 0.5s background ease
+
+          &:hover
+            background: $hover-accent

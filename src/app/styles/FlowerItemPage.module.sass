@@ -1,0 +1,195 @@
+.container
+  display: flex
+  flex-direction: column
+  align-items: center
+  gap: 1rem
+
+  .adminContainer
+    width: 95%
+    display: flex
+    align-items: center
+    gap: 2rem
+
+    a
+      cursor: pointer
+    button
+      background: transparent
+      border: none
+      outline: none
+      cursor: pointer
+
+  .slideshowContainer
+    width: 95%
+    display: flex
+    flex-direction: column
+    align-items: center
+    padding: 2rem 0
+    gap: 1rem
+
+    .heroContainer
+      position: relative
+      max-width: 500px
+      width: 100%
+      height: 500px
+      border-radius: 10px
+      filter: drop-shadow(2px 2px 8px rgba(0,0,0,0.25))
+
+      img
+        object-fit: cover
+        object-position: center
+        border-radius: 10px
+
+    .carouselContainer
+      display: flex
+      width: 100%
+      align-items: center
+      justify-content: center
+      gap: 0.33rem
+      height: 80px
+
+      button
+        width: 80px
+        height: 80px
+        position: relative
+        outline: none
+        border: none
+        background: transparent
+        cursor: pointer
+        border-radius: 10px
+
+        img
+          object-fit: cover
+          object-position: center
+          border-radius: 10px
+
+  .contentContainer
+    display: flex
+    flex-direction: column
+    max-width: 1400px
+    width: 95%
+    margin: 0 auto
+    gap: 2rem
+
+    .detailsContainer
+      display: flex
+      flex-direction: column
+      gap: 0.5rem
+
+      p
+        font-size: 0.8rem
+        font-weight: 500
+        text-transform: uppercase
+
+      h1
+        font-size: 2rem
+        text-transform: capitalize
+        font-weight: 200
+      h2
+        font-size: 1.25rem
+        text-transform: capitalize
+        font-weight: 200
+
+  .arrangementContainer
+    display: flex
+    gap: 0.25rem
+    align-items: center
+    flex-wrap: wrap
+
+    button
+      height: 60px
+      width: 200px
+      background: transparent
+      border: 1px solid #bbb
+      text-transform: uppercase
+      letter-spacing: 1px
+      font-size: 1.2rem
+      font-weight: 200
+      cursor: pointer
+      transition: 0.5s ease all
+
+      &:hover
+        background: #eee
+        border-color: #777
+
+    .active
+      background: #ffe9e9
+      border-color: #777
+
+  .flowerDetailsContainer
+    display: flex
+    flex-direction: column
+    gap: 2rem
+
+    .descriptionContainer
+      display: flex
+      flex-direction: column
+      gap: 1.5rem
+
+      h1
+        font-size: 2rem
+        font-weight: 200
+        text-transform: capitalize
+
+      p
+        line-height: 1.5
+
+    .otherDetailsContainer
+      display: flex
+      flex-direction: column
+      gap: 2rem
+
+      .generalSpecsContainer
+        display: flex
+        flex-direction: column
+        gap: 0.8rem
+
+        h1
+          font-size: 1.25rem
+          font-weight: 300
+          text-transform: capitalize
+          text-decoration: underline
+
+        ul
+          display: flex
+          flex-direction: column
+          gap: 0.5rem
+
+      .bloomSpecsContainer
+        display: flex
+        flex-direction: column
+
+        h1
+          font-size: 1.25rem
+          font-weight: 300
+          text-transform: capitalize
+          text-decoration: underline
+          margin-bottom: 0.25rem
+
+        h2
+          font-size: 1rem
+          font-weight: 300
+          text-transform: capitalize
+          margin: 0.15rem 0
+
+        ul
+          display: flex
+          flex-direction: column
+          gap: 0.1rem
+          li
+            text-transform: capitalize
+            font-size: 0.8rem
+            font-weight: 300
+            padding-left: 10px
+
+      .infoContainer
+        display: flex
+        flex-direction: column
+        gap: 0.5rem
+
+        h2
+          text-transform: capitalize
+          font-size: 1.25rem
+          font-weight: 300
+          text-decoration: underline
+        p
+          line-height: 1.5

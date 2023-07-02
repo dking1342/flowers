@@ -1,95 +1,58 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import Image from 'next/image';
+import React from 'react';
+import styles from './styles/home.module.sass';
+import PromoContainer from './components/PromoContainer';
+import { getData } from './utils/fetch';
+import ShowcaseCards from './components/cards/ShowcaseCards';
+import { prefix } from './utils/prefix';
 
-export default function Home() {
+type Props = {};
+
+const Home = async (props: Props) => {
+  const url = prefix();
+  const { payload } = await getData(`${url.url.API_URL}/flowers/api`);
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
+    <main>
+      <section className={`${styles.section} ${styles.hero}`}>
         <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
+          src={'/hero.png'}
+          alt="hero image"
+          fill
           priority
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      </section>
+      <PromoContainer
+        image="/promo-1.png"
+        header="birthday wishes granted"
+        body="give the gift of freshness"
+        button="shop for flowers"
+        theme="dark"
+      />
+      <ShowcaseCards
+        data={payload}
+        sort="occasion"
+        // category="bloom"
+        filter="birthday"
+        limit={4}
+      />
+      <PromoContainer
+        image="/promo-2.png"
+        header="get well soon"
+        body="lift their spirits with a thoughtful bouquet or plant"
+        button="shop for get well flowers"
+        theme="light"
+      />
+      <ShowcaseCards
+        data={payload}
+        sort="bouquetDetails"
+        category="bloom"
+        filter="rose"
+        limit={4}
+      />
     </main>
-  )
-}
+  );
+};
+
+export default Home;

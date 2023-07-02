@@ -1,0 +1,100 @@
+@import './_variables.sass'
+.section
+  display: flex
+  flex-direction: column
+  gap: 2rem
+
+  .heroContainer
+    min-height: 50vh
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 100%
+    height: 50vh
+
+    .titleContainer
+      width: 100%
+      height: 100%
+      display: flex
+      align-items: center
+      justify-content: center
+      text-align: center
+      background: #eee
+      text-transform: capitalize
+      font-size: clamp(1rem,10vw,2rem)
+      min-height: 200px
+
+      h1
+        font-weight: 200
+
+    .imgContainer
+      height: 100%
+      width: 100%
+      position: relative
+      min-height: 200px
+
+      img
+        object-fit: cover
+        object-position: center
+
+  .detailsContainer
+    width: $width
+    max-width: $max-width
+    margin: 0 auto
+    display: flex
+    flex-direction: column
+    gap: 1.5rem
+    margin-top: 3rem
+
+    h1
+      text-align: center
+      width: 100%
+      font-size: 2rem
+      font-weight: 400
+      text-transform: capitalize
+
+    p
+      line-height: 1.5
+
+  .operationsContainer
+    background: #113500
+    color: $color-secondary
+
+    .innerContainer
+      display: flex
+      max-width: 1400px
+      width: 95%
+      align-items: flex-start
+      justify-content: center
+      gap: 3rem
+      padding: 3rem 0
+      flex-wrap: wrap
+
+      .contactDetailsContainer
+        display: flex
+        flex-direction: column
+        gap: 0.5rem
+        min-width: 200px
+
+        h1
+          font-size: 1.5rem
+          text-transform: capitalize
+          font-weight: 300
+          text-align: center
+        ul
+          display: flex
+          flex-direction: column
+          gap: 0.33rem
+          align-items: center
+          text-align: center
+
+@media (max-width:500px)
+  .heroContainer
+    flex-direction: column
+    height: fit-content !important
+
+    .titleContainer
+      height: 60vw !important
+
+    .imgContainer
+      height: 60vw !important
