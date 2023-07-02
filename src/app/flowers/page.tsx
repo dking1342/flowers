@@ -15,11 +15,9 @@ export const metadata: Metadata = {
 const Flowers = async (props: Props) => {
   const url = prefix();
   const flowers = await getData(`${url.url.API_URL}/flowers/api`);
-  console.log({ flowers });
 
   return (
     <section className={styles.section}>
-      {JSON.stringify(flowers)}
       <FlowerCards data={flowers.payload} />
     </section>
   );

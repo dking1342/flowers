@@ -17,7 +17,7 @@ export const GET = async (request: NextRequest) => {
     const url = request.url;
     const params = url.split('/').slice(-2, -1)[0];
 
-    const flower = await Flower.findById(params);
+    const flower = await Flower.findById(params).populate('creator');
     return NextResponse.json({ payload: flower });
   } catch (error) {
     const err = error as Error;

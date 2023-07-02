@@ -5,7 +5,7 @@ import Flower from '@/app/models/Flower';
 export const GET = async () => {
   try {
     await dbConnect();
-    const data = await Flower.find({});
+    const data = await Flower.find({}).populate('creator');
 
     return NextResponse.json({ status: 200, payload: data });
   } catch (error) {
