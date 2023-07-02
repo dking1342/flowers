@@ -12,9 +12,15 @@ export const POST = async (req: NextRequest) => {
     const bodyParsed = JSON.parse(bodyStringified);
     const flower = await Flower.create(bodyParsed);
 
-    return NextResponse.json({ payload: flower });
+    return NextResponse.json(
+      { success: true, payload: flower },
+      { status: 201 }
+    );
   } catch (error) {
     const err = error as Error;
-    return NextResponse.json({ error: err.message });
+    return NextResponse.json(
+      { success: false, error: err.message },
+      { status: 400 }
+    );
   }
 };

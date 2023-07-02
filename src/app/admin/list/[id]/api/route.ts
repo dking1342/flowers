@@ -8,11 +8,17 @@ export const GET = async (request: NextRequest) => {
     const url = request.url;
     const params = url.split('/').slice(-2, -1)[0].slice(3);
 
-    const flower = await Flower.findById(params).populate('creator');
-    return NextResponse.json({ payload: flower });
+    const flower = await Flower.findById(params).populate('bouquetDetails');
+    return NextResponse.json(
+      { success: true, payload: flower },
+      { status: 200 }
+    );
   } catch (error) {
     const err = error as Error;
-    return NextResponse.json({ error: err.message });
+    return NextResponse.json(
+      { success: false, error: err.message },
+      { status: 400 }
+    );
   }
 };
 
@@ -21,9 +27,15 @@ export const DELETE = async (request: NextRequest) => {
     const id = request.url.split('/').slice(-2, -1)[0];
     const flower = await Flower.findByIdAndDelete(id);
 
-    return NextResponse.json({ payload: flower });
+    return NextResponse.json(
+      { success: true, payload: flower },
+      { status: 200 }
+    );
   } catch (error) {
     const err = error as Error;
-    return NextResponse.json({ error: err.message });
+    return NextResponse.json(
+      { success: false, error: err.message },
+      { status: 400 }
+    );
   }
 };

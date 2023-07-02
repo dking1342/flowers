@@ -2,7 +2,7 @@ import dbConnect from '@/app/lib/mongodb';
 import Staff from '@/app/models/Staff';
 import { NextRequest, NextResponse } from 'next/server';
 import bcrypt from 'bcryptjs';
-import { createAccessToken, createRefreshToken } from '@/app/utils/auth';
+import { createAccessToken } from '@/app/utils/auth';
 import { serialize } from 'cookie';
 import { COOKIE_NAME, MAX_AGE } from '@/app/constants';
 

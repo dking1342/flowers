@@ -25,6 +25,9 @@ export const GET = async () => {
     );
   } catch (error) {
     const err = error as Error;
-    return NextResponse.json({ success: false, payload: err.message });
+    return NextResponse.json(
+      { success: false, payload: err.message },
+      { status: 400 }
+    );
   }
 };

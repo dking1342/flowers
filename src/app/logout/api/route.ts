@@ -2,7 +2,6 @@ import { COOKIE_NAME, LOGOUT_AGE } from '@/app/constants';
 import dbConnect from '@/app/lib/mongodb';
 import Staff from '@/app/models/Staff';
 import { createAccessToken } from '@/app/utils/auth';
-import { prefix } from '../../utils/prefix';
 import { serialize } from 'cookie';
 import { NextRequest, NextResponse } from 'next/server';
 

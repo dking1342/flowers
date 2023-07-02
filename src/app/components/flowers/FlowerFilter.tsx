@@ -24,83 +24,52 @@ export type UserFilter = {
   val: string;
 };
 
+const priceArr: SortPriceObj[] = [
+  {
+    name: '$45 and under',
+    min: 0,
+    max: 45,
+    isActive: false,
+  },
+  {
+    name: '$45 - $60',
+    min: 45,
+    max: 60,
+    isActive: false,
+  },
+  {
+    name: '$60 - $75',
+    min: 60,
+    max: 75,
+    isActive: false,
+  },
+  {
+    name: '$75 - $90',
+    min: 75,
+    max: 90,
+    isActive: false,
+  },
+  {
+    name: 'Above $90',
+    min: 90,
+    max: 9999,
+    isActive: false,
+  },
+];
+
 const FlowerFilter = ({ data, retrieveFilter }: Props) => {
-  const occasionList = data.reduce((acc: SortObj[], val) => {
-    val.occasion.forEach(
-      (occ) =>
-        !acc.find((x) => x.name === occ) &&
-        acc.push({ name: occ, isActive: false })
-    );
-    acc = acc.sort((a, b) => (a.name > b.name ? 1 : -1));
-    return acc;
-  }, []);
-  const colorList = data.reduce((acc: SortObj[], val) => {
-    val.bouquetDetails.color.forEach(
-      (col) =>
-        !acc.find((x) => x.name === col) &&
-        acc.push({ name: col, isActive: false })
-    );
-    acc = acc.sort((a, b) => (a.name > b.name ? 1 : -1));
-    return acc;
-  }, []);
+  const [occasionArr, setOccasionArr] = useState<SortObj[]>([]);
+  const [colorArr, setColorArr] = useState<SortObj[]>([]);
+  const [flowerArr, setFlowerArr] = useState<SortObj[]>([]);
+  const [deliveryArr, setDeliveryArr] = useState<SortObj[]>([]);
 
-  const flowerList = data.reduce((acc: SortObj[], val) => {
-    val.bouquetDetails.bloom.forEach(
-      (flo) =>
-        !acc.find((x) => x.name === flo) &&
-        acc.push({ name: flo, isActive: false })
-    );
-    acc = acc.sort((a, b) => (a.name > b.name ? 1 : -1));
-    return acc;
-  }, []);
-
-  const deliveryList = data.reduce((acc: SortObj[], val) => {
-    !acc.find((x) => x.name === val.delivery.method) &&
-      acc.push({ name: val.delivery.method, isActive: false });
-    acc = acc.sort((a, b) => (a.name > b.name ? 1 : -1));
-    return acc;
-  }, []);
-
-  const priceList: SortPriceObj[] = [
-    {
-      name: '$45 and under',
-      min: 0,
-      max: 45,
-      isActive: false,
-    },
-    {
-      name: '$45 - $60',
-      min: 45,
-      max: 60,
-      isActive: false,
-    },
-    {
-      name: '$60 - $75',
-      min: 60,
-      max: 75,
-      isActive: false,
-    },
-    {
-      name: '$75 - $90',
-      min: 75,
-      max: 90,
-      isActive: false,
-    },
-    {
-      name: 'Above $90',
-      min: 90,
-      max: 9999,
-      isActive: false,
-    },
-  ];
-
-  const initialState = [
-    { type: 'occasions', vals: occasionList },
-    { type: 'color', vals: colorList },
-    { type: 'flower', vals: flowerList },
-    { type: 'delivery', vals: deliveryList },
-    { type: 'price', vals: priceList },
-  ];
+  const [initialState, setInitialState] = useState([
+    { type: 'occasions', vals: occasionArr },
+    { type: 'color', vals: colorArr },
+    { type: 'flower', vals: flowerArr },
+    { type: 'delivery', vals: deliveryArr },
+    { type: 'price', vals: priceArr },
+  ]);
 
   const [filterFlower, setFilterFlower] = useState(initialState);
   const [userFilter, setUserFilter] = useState<UserFilter[]>([]);
@@ -109,7 +78,7 @@ const FlowerFilter = ({ data, retrieveFilter }: Props) => {
     setFilterFlower((prev) => {
       let newVals = prev.map((p) => {
         if (p.type === list) {
-          p.vals.find((v) => {
+          p.vals.find((v: any) => {
             if (v.name === item) {
               v.isActive = !v.isActive;
             }
@@ -137,7 +106,7 @@ const FlowerFilter = ({ data, retrieveFilter }: Props) => {
 
   useEffect(() => {
     let userFil = filterFlower.reduce((acc: UserFilter[], val) => {
-      val.vals.forEach((item) => {
+      val.vals.forEach((item: any) => {
         item.isActive && acc.push({ type: val.type, val: item.name });
       });
       return acc;
@@ -148,6 +117,51 @@ const FlowerFilter = ({ data, retrieveFilter }: Props) => {
   useEffect(() => {
     retrieveFilter(userFilter);
   }, [userFilter, retrieveFilter]);
+
+  useEffect(() => {
+    if (data) {
+      const occasionList = data.reduce((acc: SortObj[], val) => {
+        val.occasion.forEach(
+          (occ) =>
+            !acc.find((x) => x.name === occ) &&
+            acc.push({ name: occ, isActive: false })
+        );
+        acc = acc.sort((a, b) => (a.name > b.name ? 1 : -1));
+        return acc;
+      }, []);
+      setOccasionArr(occasionList);
+
+      const colorList = data.reduce((acc: SortObj[], val) => {
+        val.bouquetDetails.color.forEach(
+          (col) =>
+            !acc.find((x) => x.name === col) &&
+            acc.push({ name: col, isActive: false })
+        );
+        acc = acc.sort((a, b) => (a.name > b.name ? 1 : -1));
+        return acc;
+      }, []);
+      setColorArr(colorList);
+
+      const flowerList = data.reduce((acc: SortObj[], val) => {
+        val.bouquetDetails.bloom.forEach(
+          (flo) =>
+            !acc.find((x) => x.name === flo) &&
+            acc.push({ name: flo, isActive: false })
+        );
+        acc = acc.sort((a, b) => (a.name > b.name ? 1 : -1));
+        return acc;
+      }, []);
+      setFlowerArr(flowerList);
+
+      const deliveryList = data.reduce((acc: SortObj[], val) => {
+        !acc.find((x) => x.name === val.delivery.method) &&
+          acc.push({ name: val.delivery.method, isActive: false });
+        acc = acc.sort((a, b) => (a.name > b.name ? 1 : -1));
+        return acc;
+      }, []);
+      setDeliveryArr(deliveryList);
+    }
+  }, [data]);
 
   return (
     <div className={styles.container}>

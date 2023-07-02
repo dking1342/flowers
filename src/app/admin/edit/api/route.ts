@@ -15,9 +15,15 @@ export const PUT = async (req: NextRequest) => {
       bodyParsed.id,
       bodyParsed.payload
     );
-    return NextResponse.json({ payload: flower });
+    return NextResponse.json(
+      { success: true, payload: flower },
+      { status: 201 }
+    );
   } catch (error) {
     const err = error as Error;
-    return NextResponse.json({ error: err.message });
+    return NextResponse.json(
+      { success: false, error: err.message },
+      { status: 400 }
+    );
   }
 };

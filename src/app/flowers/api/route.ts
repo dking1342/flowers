@@ -5,11 +5,14 @@ import Flower from '@/app/models/Flower';
 export const GET = async () => {
   try {
     await dbConnect();
-    const data = await Flower.find({}).populate('creator');
+    const data = await Flower.find({}).populate('bouquetDetails');
 
-    return NextResponse.json({ status: 200, payload: data });
+    return NextResponse.json({ success: true, payload: data }, { status: 200 });
   } catch (error) {
     const err = error as Error;
-    return NextResponse.json({ error: err.message });
+    return NextResponse.json(
+      { success: false, error: err.message },
+      { status: 404 }
+    );
   }
 };
